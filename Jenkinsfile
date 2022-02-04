@@ -5,10 +5,11 @@ pipeline {
     stages {
         stage("Build") {
             steps {
+                sh "chmod + x ./scripts/dropdb.sh"
                 sh "npm install"
             }
         }
-        stage {"Test") {
+        stage("Test") {
             steps {
                 sh "npm run test:ci"
             }            
