@@ -1,7 +1,7 @@
 pipeline {
     agent { 
         docker { 
-            image "node:12.16.2"
+            image "node:8-alpine"
             args "--network=skynet"
         } 
     }
@@ -9,14 +9,19 @@ pipeline {
         stage("Build") {
             steps {
                 sh "apk add --no-cache mongodb"
-                sh "chmod + x ./scripts/dropdb.sh"
+                sh "chmod +x ./scripts/dropdb.sh"
                 sh "npm install"
             }
         }
         stage("Test") {
             steps {
                 sh "npm run test:ci"
-            }            
+            } 
+            post {
+                always {
+                 junit "log/*.xml"   
+                }
+            }
         }        
     }
 }
