@@ -2,7 +2,16 @@ import Task from './models/task';
 
 import { publishToQueue } from './mqservice';
 
+<<<<<<< HEAD
 const defaultQueue = "tasks";
+=======
+var defaultQueue;
+
+if (process.env.NODE_ENV == 'dev')
+    defaultQueue = 'tasksdev'
+else
+    defaultQueue = 'tasks'
+>>>>>>> a6c551d (primeiro commit)
 
 export default {
     create: (req, res) => {
@@ -12,7 +21,11 @@ export default {
         task.save((err, data) => {
             if (!err) {
                 // console.log(msg)
+<<<<<<< HEAD
                 let msg = { html: `<h1>Ninja Tasks:</h1><p>Tarefa ${task.title} criada com sucesso!</p>`, email: task.owner }
+=======
+                let msg = { html: `<h1>Treko:</h1><p>Tarefa ${task.title} criada com sucesso!</p>`, email: task.owner }
+>>>>>>> a6c551d (primeiro commit)
                 publishToQueue(defaultQueue, JSON.stringify(msg));
                 return res.status(200).json({ data: data })
             }
@@ -21,14 +34,26 @@ export default {
                 return res.status(400).json(err)
             }
 
+<<<<<<< HEAD
+=======
+            if (err.name === "MongoError") {
+                return res.status(409).json(err)
+            }
+
+>>>>>>> a6c551d (primeiro commit)
             return res.status(500).json(err)
         })
     },
     list: (req, res) => {
         let query = {}
 
+<<<<<<< HEAD
         if (req.query.name) {
             query.name = new RegExp(req.query.name, 'i')
+=======
+        if (req.query.title) {
+            query.title = new RegExp(req.query.title, 'i')
+>>>>>>> a6c551d (primeiro commit)
         }
 
         Task.find(query, {}, { sort: '-date' }, (err, result) => {

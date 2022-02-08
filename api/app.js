@@ -19,7 +19,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 mongoose.set('useCreateIndex', true)
+<<<<<<< HEAD
 mongoose.connect('mongodb://mongo:127.0.0.1/trekodb', { useNewUrlParser: true });
+=======
+mongoose.connect('mongodb://127.0.0.1/trekodb', { useNewUrlParser: true });
+>>>>>>> a6c551d (primeiro commit)
 
 app.get('/task', crud.list)
 app.get('/task/:id', crud.get)
