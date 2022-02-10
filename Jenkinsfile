@@ -22,6 +22,5 @@ pipeline {
                 always {
                     junit "test-results.xml"
                 }
-            }
-        }      
+            }   
 }
