@@ -1,11 +1,7 @@
 
 import amqp from 'amqplib/callback_api';
 
-<<<<<<< HEAD
 const CONN_URL = 'amqp://rabbitmq:5672';
-=======
-const CONN_URL = 'amqp://localhost:5672';
->>>>>>> a6c551d (primeiro commit)
 
 let ch = null;
 
@@ -25,8 +21,5 @@ process.on('exit', (code) => {
         ch.close();
         console.log(`Closing rabbitmq channel`);
     }
-<<<<<<< HEAD
 });
-=======
 });
->>>>>>> a6c551d (primeiro commit)
