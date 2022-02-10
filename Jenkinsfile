@@ -8,8 +8,6 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-                sh "http://dl-cdn.alpinelinux.org/alpine/v8/main >> /etc/apk/repositories"
-                sh "http://dl-cdn.alpinelinux.org/alpine/v8/community >> /etc/apk/repositories"
                 sh "apk update"
                 sh "apk add mongodb=3.4.4-r0"
                 sh "mongo --version"
