@@ -13,13 +13,14 @@ pipeline {
             }
         }
        }
-       stage("Test") {
+        stage("Test") {
             steps {
-                sh "npm run test:ci"
-            } 
+                sh "npm run test-ci"
+            }
+        }
             post {
                 always {
-                 junit "log/*.xml"   
+                    junit "test-results.xml"
                 }
             }
         }      
