@@ -3,31 +3,23 @@ const nodemailer = require('nodemailer');
 var amqp = require('amqplib/callback_api');
 
 const transporter = nodemailer.createTransport({
-<<<<<<< HEAD
     host: "smtp.seuhost.com",
     port: 587,
     secure: false,
     auth: {
         user: "email",
         pass: "senha"
-=======
     host: "smtp.zoho.com",
     port: 587,
     secure: false,
     auth: {
         user: "fernando@qaninja.io",
         pass: "Mafuba@00"
->>>>>>> a6c551d (primeiro commit)
     },
     tls: { rejectUnauthorized: false }
 });
 
-
-<<<<<<< HEAD
-amqp.connect('amqp://localhost:5672', function (err, conn) {
-=======
 amqp.connect('amqp://rabbitmq:5672', function (err, conn) {
->>>>>>> a6c551d (primeiro commit)
     conn.createChannel(function (err, ch) {
         var q = 'tasks';
 
@@ -56,7 +48,3 @@ amqp.connect('amqp://rabbitmq:5672', function (err, conn) {
         }, { noAck: true });
     });
 });
-
-
-
-
