@@ -7,6 +7,12 @@ A QA Ninja é uma escola online que conta com um time de Ninjas de altíssimo n�
 
 # Guia de Uso
 
+Rede
+docker network create --driver bridge skynet
+
+MongoDB
+docker run --name mongo --network=skynet -d -p 27017:27017 mongo:4.1
+
 ## Docker
 
 `
@@ -16,14 +22,29 @@ docker run --name mongo -d -p 27017:27017 mongo
 ## RabbitMQ
 
 `
-docker run -d --hostname rabbitmq --name rabbitmq -p 15672:15672 -p 5672:5672 -p 25676:25676 rabbitmq:3-management
+docker run -d --hostname rabbitmq --name rabbitmq --network=skynet -p 15672:15672 -p 5672:5672 -p 25676:25676 rabbitmq:3.7.15-management
+
+Hosteando
+Windows
+Abra o prompt como Admin
+
+notepad c:\windows\system32\drivers\etc\hosts
 `
+Acrescente as configurações
+URL do MongoDb
+127.0.0.1 mongo
+
+URL do RabbitMQ
+127.0.0.1 rabbitmq
+
+URL do Jenkins :)
+127.0.0.1 jenkins
+
+Não esqueça de trocar os IPS pelo Alias no código fonte :)
+
 
 # Exemplo da Integração
 
-<<<<<<< HEAD
-![Alt text](docs/Treko.jpg?raw=true "Exemplo")
-=======
 ![Alt text](docs/Treko.jpg?raw=true "Exemplo")
 
 ## Exemplos de Report
@@ -39,8 +60,3 @@ pesquisar por: mocha html
 npm install --save-dev mochawesome
 no arquivo package.json
 "test": "npm run dropdb_win & set NODE_ENV=dev&mocha test/--reporter mochawesome --require babel-register --exit",    
-
-
-
-
->>>>>>> a6c551d (primeiro commit)
