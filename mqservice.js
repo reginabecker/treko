@@ -1,4 +1,3 @@
-
 import amqp from 'amqplib/callback_api';
 
 const CONN_URL = 'amqp://rabbitmq:5672';
@@ -21,5 +20,4 @@ process.on('exit', (code) => {
         ch.close();
         console.log(`Closing rabbitmq channel`);
     }
-});
 });
