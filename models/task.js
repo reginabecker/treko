@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
 
 let Task = new mongoose.Schema({
-    title: String,
-    owner: String,
     title: {
         type: String,
         required: [true, 'Oops! Title is required.'],
